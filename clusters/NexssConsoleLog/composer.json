@@ -1,0 +1,12 @@
+{
+    "name": "mapoart/a-console-php-plugin",
+    "authors": [
+        {
+            "name": "Marcin Polak",
+            "email": "mapoart@gmail.com"
+        }
+    ],
+    "require": {
+        "wisembly/elephant.io": "^3.3"
+    }
+}
