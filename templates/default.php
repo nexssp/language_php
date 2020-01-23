@@ -6,7 +6,7 @@ $NexssStdin = fgets(STDIN);
 $parsedJson = json_decode($NexssStdin,true);
 
 # Modify Data
-$parsedJson["phpOutput"] = "Hello from PHP! " . (string)phpversion() ;
+$parsedJson["test"] = "test";
 // $parsedJson["test"] = "test";
 $NexssStdout = json_encode($parsedJson, JSON_UNESCAPED_UNICODE);
 
