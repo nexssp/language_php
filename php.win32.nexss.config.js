@@ -11,11 +11,10 @@ languageConfig.builders = {};
 languageConfig.compilers = {
   php7: {
     install: "scoop install php",
-    // Cpp does not have possibility to compile and run on the fly. We need to save it as a exe file first.
     command: "php",
     args: "<file>",
-    help: ``
-  }
+    help: ``,
+  },
 };
 languageConfig.errors = require("./nexss.php.errors");
 languageConfig.languagePackageManagers = {
@@ -30,10 +29,7 @@ languageConfig.languagePackageManagers = {
     help: "composer",
     version: "composer version",
     init: () => {},
-    // if command not found in specification
-    // run directly on package manager
-    else: "composer <default> <args>"
-  }
+  },
 };
 
 module.exports = languageConfig;
