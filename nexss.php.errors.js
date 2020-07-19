@@ -1,5 +1,4 @@
 module.exports = {
-  "ModuleNotFoundError: No module named '(.*?)'":
-    "nexss install py <module> OR pip3 install <module>",
-  "not found": `nexss install py <module> OR pip3 install <module>`
+  "PHP Notice:  Undefined variable: (?<variable>.*?) in (?<folder>.*?) on line (?<line>.*?)$":
+    "<variable> has not been found. Check <folder> on line <line>",
 };
