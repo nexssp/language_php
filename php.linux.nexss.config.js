@@ -1,4 +1,4 @@
-let languageConfig = Object.assign({}, require("../php.win32.nexss.config"));
+let languageConfig = Object.assign({}, require("./php.win32.nexss.config"));
 languageConfig.errors = require("./nexss.php.errors");
 languageConfig.compilers = {
   php7: {
