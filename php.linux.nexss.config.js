@@ -2,14 +2,14 @@ let languageConfig = Object.assign({}, require("./php.win32.nexss.config"));
 languageConfig.errors = require("./nexss.php.errors");
 languageConfig.compilers = {
   php7: {
-    install: "sudo apt install php",
+    install: "sudo apt install -y php",
     command: "php",
     args: "<file>",
     help: ``,
   },
 };
 languageConfig.languagePackageManagers = {
-  npm: {
+  composer: {
     installation:
       "sudo apt-get update && sudo apt-get install curl && sudo curl -s https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer",
     messageAfterInstallation:
