@@ -1,7 +1,6 @@
 let languageConfig = Object.assign({}, require("./php.win32.nexss.config"));
 languageConfig.errors = require("./nexss.php.errors");
 
-const dist = require("../../lib/osys").dist;
 // Ubuntu, Debian
 languageConfig.compilers = {
   php7: {
@@ -28,18 +27,22 @@ languageConfig.languagePackageManagers = {
   },
 };
 
-switch (dist()) {
-  case "Oracle":
-  case "Oracle Linux Server":
-    languageConfig.compilers.php7.install = "microdnf install php";
-    languageConfig.languagePackageManagers.composer.installation =
-      "microdnf update && microdnf install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
-    break;
-  case "Alpine":
-    languageConfig.compilers.php7.install = "apk add php";
-    languageConfig.languagePackageManagers.composer.installation =
-      "apk update && apk install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
-    break;
+// If statement must be here for older versions nexss <2.1.12
+if (require("fs").existsSync(`${__dirname}/../../lib/osys`)) {
+  const dist = require("../../lib/osys").dist;
+  switch (dist()) {
+    case "Oracle":
+    case "Oracle Linux Server":
+      languageConfig.compilers.php7.install = "microdnf install php";
+      languageConfig.languagePackageManagers.composer.installation =
+        "microdnf update && microdnf install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
+      break;
+    case "Alpine":
+      languageConfig.compilers.php7.install = "apk add php";
+      languageConfig.languagePackageManagers.composer.installation =
+        "apk update && apk install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
+      break;
+  }
 }
 
 module.exports = languageConfig;
