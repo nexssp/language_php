@@ -1,5 +1,8 @@
 let languageConfig = Object.assign({}, require("./php.win32.nexss.config"));
 languageConfig.errors = require("./nexss.php.errors");
+
+const dist = require("../../lib/osys").dist;
+// Ubuntu, Debian
 languageConfig.compilers = {
   php7: {
     install: "apt install -y php",
@@ -8,10 +11,11 @@ languageConfig.compilers = {
     help: ``,
   },
 };
+
 languageConfig.languagePackageManagers = {
   composer: {
     installation:
-      "apt update && apt install curl && curl -s https://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer",
+      "apt update && apt install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer",
     messageAfterInstallation:
       "Add to the top of your php file(s): require __DIR__ . '/vendor/autoload.php';", //this message will be displayed after this package manager installation, maybe some action needed etc.
     installed: "composer installed",
@@ -23,5 +27,19 @@ languageConfig.languagePackageManagers = {
     init: () => {},
   },
 };
+
+switch (dist()) {
+  case "Oracle":
+  case "Oracle Linux Server":
+    languageConfig.compilers.php7.install = "microdnf install php";
+    languageConfig.languagePackageManagers.composer.installation =
+      "microdnf update && microdnf install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
+    break;
+  case "Alpine":
+    languageConfig.compilers.php7.install = "apk add php";
+    languageConfig.languagePackageManagers.composer.installation =
+      "apk update && apk install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
+    break;
+}
 
 module.exports = languageConfig;
