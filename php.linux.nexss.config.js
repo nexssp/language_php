@@ -38,7 +38,7 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
         "microdnf update && microdnf install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
       break;
     case "Alpine Linux":
-      languageConfig.compilers.php7.install = "apk add php";
+      languageConfig.compilers.php7.install = "apk add php php7-json";
       languageConfig.languagePackageManagers.composer.installation =
         "apk update && apk install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
       break;
