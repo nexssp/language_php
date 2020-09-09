@@ -30,7 +30,8 @@ languageConfig.languagePackageManagers = {
 // If statement must be here for older versions nexss <2.1.12
 if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
   const dist = require(`${process.env.NEXSS_SRC_PATH}/lib/osys`).dist;
-  switch (dist()) {
+  const distName = dist();
+  switch (distName) {
     case "Oracle":
     case "Oracle Linux Server":
       languageConfig.compilers.php7.install = "microdnf install php";
@@ -43,6 +44,10 @@ if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
         "apk update && apk install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer";
       break;
   }
+
+  languageConfig.dist = distName;
+} else {
+  languageConfig.dist = "Ubuntu";
 }
 
 module.exports = languageConfig;
