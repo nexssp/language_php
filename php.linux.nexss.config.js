@@ -28,8 +28,8 @@ languageConfig.languagePackageManagers = {
 };
 
 // If statement must be here for older versions nexss <2.1.12
-if (require("fs").existsSync(`${__dirname}/../../lib/osys`)) {
-  const dist = require("../../lib/osys").dist;
+if (require("fs").existsSync(`${process.env.NEXSS_SRC_PATH}/lib/osys.js`)) {
+  const dist = require(`${process.env.NEXSS_SRC_PATH}/lib/osys`).dist;
   switch (dist()) {
     case "Oracle":
     case "Oracle Linux Server":
