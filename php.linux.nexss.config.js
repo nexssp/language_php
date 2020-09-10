@@ -48,11 +48,11 @@ php -r "unlink('composer-setup.php');"`;
     case "Arch Linux":
       languageConfig.compilers.php7.install = `pacman -S --noconfirm php php7-json`;
       break;
-    case "FEDORA":
+    case "Fedora":
       languageConfig.compilers.php7.install = `dnf install php php7-json`;
       break;
-    case "CENTOS":
-    case "RHEL":
+    case "CentOS Linux":
+    case "RHEL Linux":
       languageConfig.compilers.php7.install = "yum install php php7-json";
   }
 
