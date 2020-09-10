@@ -46,7 +46,7 @@ php -r "unlink('composer-setup.php');"`;
       languageConfig.compilers.php7.install = "apk add php php7-json";
       break;
     case "Arch Linux":
-      languageConfig.compilers.php7.install = `pacman -S --noconfirm php php7-json`;
+      languageConfig.compilers.php7.install = `pacman -Sy --noconfirm php php7-json`;
       break;
     case "Fedora":
       languageConfig.compilers.php7.install = `dnf install php php7-json`;
