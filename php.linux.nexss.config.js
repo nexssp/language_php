@@ -62,15 +62,14 @@ php -r "unlink('composer-setup.php');"`;
       languageConfig.compilers.php7.install = `${sudo}apk add php php7-json php-imap`;
       break;
     case "Arch Linux":
-      languageConfig.compilers.php7.install = `${sudo}pacman -Sy --noconfirm php`;
+      languageConfig.compilers.php7.install = `${sudo}pacman -Sy --noconfirm php php-imap`;
       break;
     case "Fedora":
-      languageConfig.compilers.php7.install = `${sudo}dnf install -y php php7-json php-imap`;
+      languageConfig.compilers.php7.install = `${sudo}dnf install -y php php-json php-imap`;
       break;
     case "CentOS Linux":
     case "RHEL Linux":
-      languageConfig.compilers.php7.install =
-        "${sudo}yum install -y php php7-json php-imap";
+      languageConfig.compilers.php7.install = `${sudo}yum install -y php php-json php-imap`;
   }
 
   languageConfig.dist = distName;
