@@ -52,7 +52,7 @@ php -r "unlink('composer-setup.php');"`;
           languageConfig.compilers.php7.install = `${sudo}dnf install -y php php-json php-imap`;
           languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         } else {
-          languageConfig.compilers.php7.install = `${sudo}yum update && ${sudo}yum install oracle-epel-release* && ${sudo}yum install -y php php-json php-imap`;
+          languageConfig.compilers.php7.install = `${sudo}yum update && ${sudo}yum install -y oracle-epel-release* && ${sudo}yum install -y php php-json php-imap`;
           languageConfig.languagePackageManagers.composer.installation = `${sudo}yum update && ${sudo}yum install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         }
       }
