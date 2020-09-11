@@ -47,7 +47,7 @@ php -r "unlink('composer-setup.php');"`;
       if (version) {
         //if here for older versions of nexssp
         const distVersion = version(); // *1 converts to number
-        if (distVersion > 7) {
+        if (distVersion >= 8) {
           // TODO: recognize the slim version
           languageConfig.compilers.php7.install = `${sudo}dnf install -y php php-json php-imap`;
           languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
@@ -56,7 +56,6 @@ php -r "unlink('composer-setup.php');"`;
           languageConfig.languagePackageManagers.composer.installation = `${sudo}yum update && ${sudo}yum install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         }
       }
-
       break;
     case "Alpine Linux":
       languageConfig.compilers.php7.install = `${sudo}apk add php php7-json php-imap`;
