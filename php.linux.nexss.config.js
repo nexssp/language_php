@@ -68,6 +68,7 @@ php -r "unlink('composer-setup.php');"`;
       languageConfig.compilers.php7.install = `${sudo}dnf install -y php php-json php-imap`;
       break;
     case "CentOS Linux":
+      languageConfig.compilers.php7.install = `${sudo}yum install -y epel-release* && yum install -y php php-json php-imap`;
     case "RHEL Linux":
       languageConfig.compilers.php7.install = `${sudo}yum install -y php php-json php-imap`;
   }
