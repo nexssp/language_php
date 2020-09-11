@@ -40,7 +40,7 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"`;
   const { dist, version } = require(`${process.env.NEXSS_SRC_PATH}/lib/osys`);
   const distName = dist();
-
+  // TODO: Later to cleanup this config file !!
   switch (distName) {
     case "Oracle":
     case "Oracle Linux Server":
@@ -49,26 +49,28 @@ php -r "unlink('composer-setup.php');"`;
         const distVersion = version(); // *1 converts to number
         if (distVersion > 7) {
           // TODO: recognize the slim version
-          languageConfig.compilers.php7.install = `${sudo}dnf -y install php php-json`;
+          languageConfig.compilers.php7.install = `${sudo}dnf install -y php php-json php-imap`;
+          languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         } else {
-          languageConfig.compilers.php7.install = `${sudo}yum -y php php-json`;
+          languageConfig.compilers.php7.install = `${sudo}yum install -y php php-json php-imap`;
+          languageConfig.languagePackageManagers.composer.installation = `${sudo}yum update && ${sudo}yum install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
         }
       }
 
-      languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
       break;
     case "Alpine Linux":
-      languageConfig.compilers.php7.install = `${sudo}apk add php php7-json`;
+      languageConfig.compilers.php7.install = `${sudo}apk add php php7-json php-imap`;
       break;
     case "Arch Linux":
       languageConfig.compilers.php7.install = `${sudo}pacman -Sy --noconfirm php`;
       break;
     case "Fedora":
-      languageConfig.compilers.php7.install = `${sudo}dnf install -y php php7-json`;
+      languageConfig.compilers.php7.install = `${sudo}dnf install -y php php7-json php-imap`;
       break;
     case "CentOS Linux":
     case "RHEL Linux":
-      languageConfig.compilers.php7.install = "${sudo}yum install -y php";
+      languageConfig.compilers.php7.install =
+        "${sudo}yum install -y php php7-json php-imap";
   }
 
   languageConfig.dist = distName;
