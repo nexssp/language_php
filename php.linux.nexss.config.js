@@ -53,7 +53,7 @@ php -r "unlink('composer-setup.php');"`;
       break;
     case "CentOS Linux":
     case "RHEL Linux":
-      languageConfig.compilers.php7.install = "yum install php php7-json";
+      languageConfig.compilers.php7.install = "yum install php";
   }
 
   languageConfig.dist = distName;
