@@ -49,13 +49,13 @@ php -r "unlink('composer-setup.php');"`;
         const distVersion = version(); // *1 converts to number
         if (distVersion > 7) {
           // TODO: recognize the slim version
-          languageConfig.compilers.php7.install = `${sudo}dnf install php`;
+          languageConfig.compilers.php7.install = `${sudo}dnf -y install php`;
         } else {
-          languageConfig.compilers.php7.install = `${sudo}yum php`;
+          languageConfig.compilers.php7.install = `${sudo}yum -y php`;
         }
       }
 
-      languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
+      languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
       break;
     case "Alpine Linux":
       languageConfig.compilers.php7.install = `${sudo}apk add php php7-json`;
@@ -64,7 +64,7 @@ php -r "unlink('composer-setup.php');"`;
       languageConfig.compilers.php7.install = `${sudo}pacman -Sy --noconfirm php`;
       break;
     case "Fedora":
-      languageConfig.compilers.php7.install = `${sudo}dnf install php php7-json`;
+      languageConfig.compilers.php7.install = `${sudo}dnf install -y php php7-json`;
       break;
     case "CentOS Linux":
     case "RHEL Linux":
