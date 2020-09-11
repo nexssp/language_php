@@ -49,9 +49,9 @@ php -r "unlink('composer-setup.php');"`;
         const distVersion = version(); // *1 converts to number
         if (distVersion > 7) {
           // TODO: recognize the slim version
-          languageConfig.compilers.php7.install = `${sudo}dnf -y install php`;
+          languageConfig.compilers.php7.install = `${sudo}dnf -y install php php-json`;
         } else {
-          languageConfig.compilers.php7.install = `${sudo}yum -y php`;
+          languageConfig.compilers.php7.install = `${sudo}yum -y php php-json`;
         }
       }
 
