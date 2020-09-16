@@ -69,6 +69,10 @@ php -r "unlink('composer-setup.php');"`;
     case "CentOS Linux":
       languageConfig.compilers.php7.install = `${sudo}yum install -y epel-release* && yum install -y php php-json php-imap`;
       break;
+    case "openSUSE Leap":
+    case "openSUSE Tumbleweed":
+      languageConfig.compilers.php7.install = `${sudo}zypper -n install php7 php7-json`;
+      break;
     case "RHEL Linux":
       languageConfig.compilers.php7.install = `${sudo}yum install -y php php-json php-imap`;
       break;
