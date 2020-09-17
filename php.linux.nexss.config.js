@@ -73,9 +73,11 @@ php -r "unlink('composer-setup.php');"`;
     case "openSUSE Tumbleweed":
       languageConfig.compilers.php7.install = `${sudo}zypper -n install php7 php7-json`;
       break;
+    case "Amazon Linux":
     case "RHEL Linux":
       languageConfig.compilers.php7.install = `${sudo}yum install -y php php-json php-imap`;
       break;
+    default:
   }
 
   languageConfig.dist = distName;
