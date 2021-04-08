@@ -8,10 +8,11 @@ if (process.getuid && process.getuid() === 0) {
 
 // Ubuntu, Debian
 languageConfig.compilers = {
-  php7: {
+  php8: {
     install: `${sudo}apt install -y php`,
     command: "php",
-    args: "<file>",
+    args:
+      "-c " + require("path").resolve(__dirname + "/etc/php.ini") + " <file>",
     help: ``,
   },
 };

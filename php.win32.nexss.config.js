@@ -12,10 +12,11 @@ languageConfig.years = ["1995"];
 languageConfig.extensions = [".php"];
 languageConfig.builders = {};
 languageConfig.compilers = {
-  php7: {
+  php8: {
     install: "scoop install php",
     command: "php",
-    args: "<file>",
+    args:
+      "-c " + require("path").resolve(__dirname + "/etc/php.ini") + " <file>",
     help: ``,
   },
 };
