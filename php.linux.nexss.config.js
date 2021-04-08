@@ -52,10 +52,10 @@ php -r "unlink('composer-setup.php');"`;
       const distVersion = process.distroVersion * 1; // *1 converts to number
       if (distVersion >= 8) {
         // TODO: recognize the slim version
-        compilerConfig.install = `${sudo}dnf update -y && ${sudo}dnf install -y oracle-epel-release* && ${sudo}dnf install -y php php-json`;
+        compilerConfig.install = `${sudo}dnf update -y && ${sudo}dnf install -y oracle-epel-release* && ${sudo}dnf install -y php php-json php-pdo php-intl`;
         languageConfig.languagePackageManagers.composer.installation = `${sudo}dnf update -y && ${sudo}dnf install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
       } else {
-        compilerConfig.install = `${sudo}yum update -y && ${sudo}yum install -y oracle-epel-release* && ${sudo}yum install -y php php-json php-imap`;
+        compilerConfig.install = `${sudo}yum update -y && ${sudo}yum install -y oracle-epel-release* && ${sudo}yum install -y php php-json php-imap php-pdo php-intl`;
         languageConfig.languagePackageManagers.composer.installation = `${sudo}yum update -y && ${sudo}yum install -y curl && curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer`;
       }
 
