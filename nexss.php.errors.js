@@ -13,4 +13,5 @@ enable the extension in the php.ini file by uncommenting or adding the line: ext
     toCheckPHPini,
   "Class 'Locale' not found":
     "Please enable php_intl extension in your php.ini file." + toCheckPHPini,
+  "Unable to load dynamic library '(?<variable>.*?)'": `Please install the php-<variable> by command: '${getInstallCommandByDist()} php-<variable>'`,
 };
