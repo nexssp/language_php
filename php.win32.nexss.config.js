@@ -17,9 +17,14 @@ languageConfig.compilers = {
     command: "php",
     args:
       "-c " + require("path").resolve(__dirname + "/etc/php.ini") + " <file>",
-    help: ``,
+    // run: "php -r", This will replace the main run (languageConfig.run) if per compiler needed.
   },
 };
+
+// languageConfig.run = () => {
+//   console.log(languageConfig);
+// };
+languageConfig.run = "<currentCommand> -r";
 languageConfig.errors = require("./nexss.php.errors");
 languageConfig.languagePackageManagers = {
   npm: {
