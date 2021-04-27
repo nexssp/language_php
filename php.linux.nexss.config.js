@@ -66,7 +66,7 @@ switch (distName) {
     compilerConfig.install = `${sudo}pacman -Sy --noconfirm php php-imap`;
     break;
   case process.distros.FEDORA:
-    compilerConfig.install = `${sudo}dnf install -y php php-json php-imap`;
+    compilerConfig.install = `${sudo}dnf install -y php php-json`;
     break;
   case process.distros.CENTOS:
     compilerConfig.install = `${sudo}yum install -y epel-release* && yum install -y php php-json php-imap`;
