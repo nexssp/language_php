@@ -9,4 +9,5 @@ languageConfig.compilers = {
   },
 };
 
+languageConfig.dist = 'macOS';
 module.exports = languageConfig;
