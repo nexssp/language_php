@@ -8,3 +8,5 @@ languageConfig.compilers = {
     help: ``,
   },
 };
+
+module.exports = languageConfig;
