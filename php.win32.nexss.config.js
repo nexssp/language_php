@@ -15,6 +15,15 @@ languageConfig.compilers = {
   php8: {
     install: "scoop install php",
     command: "php",
+    args: "<file>",
+    // args:
+    //   "-c " + require("path").resolve(__dirname + "/etc/php.ini") + " <file>",
+    // run: "php -r", This will replace the main run (languageConfig.run) if per compiler needed.
+    templates: `templates_php8`,
+  },
+  php74: {
+    install: "scoop install php74",
+    command: "php",
     args:
       "-c " + require("path").resolve(__dirname + "/etc/php.ini") + " <file>",
     // run: "php -r", This will replace the main run (languageConfig.run) if per compiler needed.
@@ -36,7 +45,7 @@ languageConfig.languagePackageManagers = {
     install: "composer require",
     uninstall: "composer remove",
     help: "composer",
-    version: "composer version",
+    version: "<currentCommand> --version",
     init: () => {},
   },
 };
