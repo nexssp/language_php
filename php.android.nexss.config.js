@@ -1,4 +1,4 @@
-let languageConfig = Object.assign({}, require("./nodejs.win32.nexss.config"));
+let languageConfig = Object.assign({}, require("./php.win32.nexss.config"));
 
 let sudo = process.sudo;
 
