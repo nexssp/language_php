@@ -4,13 +4,13 @@ let sudo = process.sudo;
 
 languageConfig.compilers = {
   php8: {
-    install: `${sudo}apt install -y php`,
+    install: `apt install -y php`,
     command: "php",
     args: "<file>",
     help: ``,
   },
   php8ini: {
-    install: `${sudo}apt install -y php`,
+    install: `apt install -y php`,
     command: "php",
     args:
       "-c " + require("path").resolve(__dirname + "/etc/php.ini") + " <file>",
